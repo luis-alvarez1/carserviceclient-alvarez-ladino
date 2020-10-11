@@ -19,5 +19,6 @@ export class CarListComponent implements OnInit {
         this.giphyService.get(car.name).subscribe(url => car.giphyUrl = url);
       }
     });
+    console.log(this.cars);
   }
 }
