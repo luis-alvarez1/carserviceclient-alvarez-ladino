@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { CarService } from "../shared/car/car.service";
 import { GiphyService } from "../shared/giphy/giphy.service";
 import { NgForm } from "@angular/forms";
+import { OwnerService } from "../shared/owner/owner.service";
 
 @Component({
   selector: "app-car-edit",
@@ -12,14 +13,15 @@ import { NgForm } from "@angular/forms";
 })
 export class CarEditComponent implements OnInit, OnDestroy {
   car: any = {};
-
+  owners: any[] = [];
   sub: Subscription;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private carService: CarService,
-    private giphyService: GiphyService
+    private giphyService: GiphyService,
+    private ownersService: OwnerService
   ) {}
 
   ngOnInit() {
@@ -40,6 +42,13 @@ export class CarEditComponent implements OnInit, OnDestroy {
         });
       }
     });
+
+    this.ownersService
+      .getData("https://thawing-chamber-47973.herokuapp.com/owners")
+      .subscribe((res: any) => {
+        this.owners = res;
+        console.log(this.owners);
+      });
   }
 
   ngOnDestroy() {

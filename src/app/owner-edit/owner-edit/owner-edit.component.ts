@@ -11,7 +11,6 @@ import { Router } from "@angular/router";
 export class OwnerEditComponent implements OnInit {
   constructor(private ownerService: OwnerService, private router: Router) {}
 
-  public owner;
   ngOnInit() {}
 
   gotoList() {
