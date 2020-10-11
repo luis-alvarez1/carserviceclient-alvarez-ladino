@@ -1,6 +1,14 @@
-<mat-selection-list style="background-color: whitesmoke;">
-    <mat-list-option class="row m-5" *ngFor="let owner of owners">
-        Nombre: {{ owner.name }}
+<mat-card>
+    <mat-card-title>Owner List</mat-card-title>
+    <mat-card-content>
+        <mat-list>
+            <mat-list-item *ngFor="let owner of owners">
+                <h3 mat-line>
+                    <a>Nombre: {{owner.name}}</a>
+                </h3>
+            </mat-list-item>
+        </mat-list>
+    </mat-card-content>
 
-    </mat-list-option>
-</mat-selection-list>
+    <button mat-fab color="primary">Add</button>
+</mat-card>
