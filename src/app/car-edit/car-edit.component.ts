@@ -43,12 +43,17 @@ export class CarEditComponent implements OnInit, OnDestroy {
       }
     });
 
-    this.ownersService
-      .getData()
-      .subscribe((res: any) => {
-        this.owners = res;
-        console.log(this.owners);
-      });
+    this.ownersService.getData()
+    .subscribe(data => {
+      console.log(data._embedded);
+      this.owners = data._embedded.owners.map(owner =>{
+        return {
+          ...owner,
+          ownerId: owner._links.self.href.split('/')[owner._links.self.href.split('/').length - 1]
+        }
+      })
+      this.owners = this.owners.filter(owner => owner.name !== null);
+    });
   }
 
   ngOnDestroy() {

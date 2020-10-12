@@ -1,19 +1,17 @@
-<mat-card>
-    <mat-card-title>Owner List</mat-card-title>
-    <mat-card-content>
-        <mat-list>
-            <mat-list-item *ngFor="let owner of owners">
+<div class="row table" *ngFor="let owner of owners">
+    <a mat-button [routerLink]="['/owner-edit', owner.id]">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{owner.name}} </mat-card-title>
+            <mat-card-subtitle>{{owner.profession}}</mat-card-subtitle>
+        </mat-card-header>
 
-                <h3 mat-line>
-                    <a mat-button [routerLink]="['/owner-edit', owner.ownerId]">
-                        Nombre: {{owner.name}}
-                        Dni: {{owner.dni}}
-                        Profesion: {{owner.profession}}
-                    </a>
-                </h3>
-            </mat-list-item>
-        </mat-list>
-    </mat-card-content>
+        <mat-card-content>
+            <p>
+                DNI: {{owner.dni}}
+            </p>
+        </mat-card-content>
+    </a>
 
-    <button mat-fab color="primary" [routerLink]="['/owner-add']">Add</button>
-</mat-card>
+</div>
+<button mat-fab color="primary" [routerLink]="['/owner-add']">Add</button>
