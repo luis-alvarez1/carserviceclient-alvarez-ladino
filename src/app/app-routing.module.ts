@@ -24,9 +24,13 @@ const routes: Routes = [
     component: OwnerListComponent,
   },
   {
-    path: "owner-edit",
+    path: "owner-edit/:id",
     component: OwnerEditComponent,
   },
+  {
+    path: "owner-add",
+    component: OwnerEditComponent,
+  }
 ];
 
 @NgModule({

@@ -5,14 +5,23 @@ import { Observable } from "rxjs";
 
 @Injectable({ providedIn: "root" })
 export class OwnerService {
-  public API = "//https://thawing-chamber-47973.herokuapp.com";
-  public OWNER_API = this.API + "/owners";
+  public API = 'https://thawing-chamber-47973.herokuapp.com';
+  public OWNER_API = this.API + '/owners';
 
   constructor(private http: HttpClient) {
     console.log("servicio listo");
   }
-  getData(url: string) {
-    return this.http.get(url).pipe(map((data) => data["_embedded"].owners));
+
+  getData(): Observable<any> {
+    return this.http.get(this.OWNER_API, {
+      params: {
+        size: '100'
+      }
+    });
+  }
+
+  get(id: string) {
+    return this.http.get(this.OWNER_API + '/' + id);
   }
 
   save(owner: any): Observable<any> {

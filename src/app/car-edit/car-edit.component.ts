@@ -44,7 +44,7 @@ export class CarEditComponent implements OnInit, OnDestroy {
     });
 
     this.ownersService
-      .getData("https://thawing-chamber-47973.herokuapp.com/owners")
+      .getData()
       .subscribe((res: any) => {
         this.owners = res;
         console.log(this.owners);

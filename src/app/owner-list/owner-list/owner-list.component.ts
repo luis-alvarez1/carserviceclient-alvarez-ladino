@@ -10,17 +10,23 @@ import { OwnerService } from '../../shared/owner/owner.service';
 export class OwnerListComponent implements OnInit {
   owners: any[] = [];
 
+
   constructor( private ownersService: OwnerService) { }
 
   ngOnInit() {
-    this.ownersService.getData('https://thawing-chamber-47973.herokuapp.com/owners')
-    .subscribe((res:any) => {
-      console.log(res);
-      this.owners = res;
-      console.log(this.owners);
+    this.ownersService.getData()
+    .subscribe(data => {
+      console.log(data._embedded);
+      this.owners = data._embedded.owners.map(owner =>{
+        return {
+          ...owner,
+          ownerId: owner._links.self.href.split('/')[owner._links.self.href.split('/').length - 1]
+        }
+      })
+      this.owners = this.owners.filter(owner => owner.name !== null);
     });
+
   }
 
-  
 
 }
