@@ -19,15 +19,6 @@
       </mat-form-field>
 
       <mat-form-field style="margin-left: 40px">
-        <!-- <input
-          matInput
-          placeholder="Owner DNI"
-          [(ngModel)]="car.ownerDni"
-          required
-          name="ownerDni"
-          #ownerDni
-        /> -->
-
         <input
           matInput
           placeholder="Owner DNI"
@@ -40,7 +31,7 @@
 
         <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
           <mat-option *ngFor="let owner of owners" [value]="owner.dni">
-            {{ owner.name && owner.name }}
+            {{ owner.name ? owner.name : null }}
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
