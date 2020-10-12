@@ -1,5 +1,5 @@
 <div class="row" *ngFor="let owner of owners" style="text-align: center;">
-    <a class="table" mat-button [routerLink]="['/owner-edit', owner.id]">
+    <a class="table" mat-button [routerLink]="['/owner-edit', owner.ownerId]">
         <mat-card-header>
             <div mat-card-avatar class="example-header-image"></div>
             <mat-card-title>{{owner.name}} </mat-card-title>
